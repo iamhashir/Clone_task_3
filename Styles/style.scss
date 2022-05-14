@@ -1,0 +1,256 @@
+// thus colors are used to set the background color of circle and lines in our page
+$row-circle-color1: #4e89ae;
+$row-circle-color2: #43658b;
+$row-circle-color3: #ed6663;
+$row-circle-color4: #ffa372;
+
+// This colors are used to set the background color of header and footer in our page
+$Header-Footer-colors: #8ccff7;
+
+// This color is used to hover background color of circle and line in our page
+$circle-row-hover-color:#444;
+
+// This @mixin is used to centre different objects (image,circles) in our page using flex box
+@mixin CentringUsingFlex {
+    // flex box is used to align our items 
+    display: flex;
+
+    justify-content: center;
+    // justify content is used to direct our content along the x axis
+    align-items: center;
+    // align items is used to direct our content along the y axis
+}
+
+// This @mixin is created to prevent using a block of code again and again 
+@mixin SetImage {
+    // image size is set to cover
+    background-size: cover;
+    // background iamage is set to no repeat
+    background-repeat: no-repeat;
+}
+
+// This @mixin is used to re-use media query for desktop device
+@mixin for-desktop-devices {
+    @media (min-width:801px) {
+        @content;
+    }
+}
+
+// This @mixin is used to re-use media query for tablet device
+@mixin for-tablet-devices {
+    @media (max-width:800px)and(min-width:620px) {
+        @content;
+    }
+}
+
+// This @mixin is just used to prevent over stacking of circles 
+@mixin flex-stack {
+    @media (max-width:620px) and (min-width:481px) {
+        @content;
+    }
+}
+
+// This @mixin is used to re-use media query for mobile device
+@mixin for-mobile-devices {
+    @media (max-width:480px) {
+        @content;
+    }
+}
+
+// * selector is used to select whole document 
+* {
+    // default margin and paddings are set to zero so that there are no default styling applied by css
+    margin: 0;
+    padding: 0;
+}
+
+// main wrapper is a class applied to whole page it just works as a body tag but it is a child of body tag and parent of every tag in our page
+.mainWrapper {
+    height: 100%;
+}
+
+// Header is a selector used to target the image tag at the top
+.Header {
+    // default set  colors are applied through sass variable functionality
+    background: $Header-Footer-colors;
+    // height is set to 100%
+    height: 100%; // % selector is  a unit which inherits the unit of its parent and calculate the percentage from it
+
+    width: 100vw; // vw view port width is a unit which uses the main size of the view port itself it is not dependant on any tag but on the view port window itself 
+
+    // CentringUsingFlex is used here to centre our images
+    @include CentringUsingFlex();
+
+    // Now i have created a seperate holder for image inside pur header tag
+    // Multiple images are added through media queries it will be added according to the resizing of our images
+    #image-holder {
+
+        // image is added based on multiple media queries
+        @include for-desktop-devices {
+            background: url("https://via.placeholder.com/400");
+            @include SetImage(); //image is centered through reuseable @Mixin code
+            height: 400px;
+            width: 400px;
+        }
+
+        // image is added based on multiple media queries
+        @include for-tablet-devices() {
+            background: url("https://via.placeholder.com/300");
+            @include SetImage(); //image is centered through reuseable @Mixin code
+            height: 300px;
+            width: 300px;
+        }
+
+        // image is added based on multiple media queries
+        @include flex-stack() {
+            background: url("https://via.placeholder.com/300");
+            @include SetImage(); //image is centered through reuseable @Mixin code
+            height: 300px;
+            width: 300px;
+        }
+
+        // image is added based on multiple media queries
+        @include for-mobile-devices() {
+            background: url("https://via.placeholder.com/200");
+            @include SetImage(); //image is centered through reuseable @Mixin code
+            height: 200px;
+            width: 200px;
+        }
+    }
+}
+
+// lines selector is used as a parent of every line area in our page
+.Lines {
+    margin-top: 2.7rem; //rem unit is used so that our margin remain constant according to every device because rem is based independently on every browser's font settings 
+
+    @include flex-stack {
+        //flex-stack is a media query @mixin of WxH(620x481 px) 
+        // media query's margin is set here
+        margin-top: 2rem; //rem unit is used so that our margin remain constant according to every device because rem is based independently on every browser's font settings 
+    }
+
+    .line {
+        height: 5vh; // vw view port height is a unit which uses the main size of the view port itself it is not dependant on any tag but on the view port window itself 
+
+        &:hover {
+            // & targets the current selector which means line 
+            // background color on hovering line is set here
+            background: #444;
+        }
+
+        // height is customized for different devices
+        @include for-desktop-devices {
+            height: 4vh; // vh view port height is a unit which uses the main size of the view port itself it is not dependant on any tag but on the view port window itself 
+        }
+
+        // height is customized for different devices
+        @include flex-stack {
+            //flex-stack is a media query @mixin of WxH(620x481 px) 
+            height: 4vh;
+        }
+    }
+
+    // the nesting in sass works as .Lines > line it follows parents and child structure sam as html unlink css 
+
+    // line colors are given which was set  through sass variables
+    .line1 {
+        background: $row-circle-color1;
+    }
+
+    .line2 {
+        background: $row-circle-color2;
+    }
+
+    .line3 {
+        background: $row-circle-color3;
+    }
+
+    .line4 {
+        background: $row-circle-color4;
+    }
+}
+
+#circles {
+    @include CentringUsingFlex(); //circles are centered using @mixin
+    width: 100vw; //vw unit is used to get unit with respect to view port
+
+    @include flex-stack {
+        //flex-stack is a media query of WxH(620x481 px) 
+
+        height: 47.5vh;
+        // flex direction is changed
+        flex-direction: column;
+        // the content is directed to space around along x axis
+        justify-content: space-around;
+        // the content is directed to space around along y axis
+        align-items: space-around;
+    }
+
+    // height is customized for specific width devices    
+
+    @include for-desktop-devices {
+        height: 28vh;
+    }
+
+    @include for-tablet-devices {
+        height: 47.5vh;
+    }
+
+    @include for-mobile-devices {
+        height: 48.9vh;
+        // flex direction is changed
+        flex-direction: column;
+        // the content is directed to space around along x axis
+        justify-content: space-around;
+    }
+
+    .circle {
+
+        &:hover {
+            // & targets the current selector which means line 
+            // background color on hovering line is set here
+            background: #444;
+        }
+
+        width: 100vw;
+        // border radius is used to make solid squares a circles
+        border-radius: 100px;
+        margin-left: 12px;
+    }
+
+    // colors are given to the circles and heigh and width are set of each circle
+    .circle1 {
+        background: $row-circle-color1;
+        height: 70px;
+        width: 70px;
+    }
+
+    // the nesting in sass works as #circles > .circle it follows parents and child structure sam as html unlink css 
+
+    .circle2 {
+        background: $row-circle-color2;
+        height: 80px;
+        width: 80px;
+    }
+
+    // circles height and width are increasing in ascending order
+    .circle3 {
+        background: $row-circle-color3;
+        height: 90px;
+        width: 90px;
+    }
+
+    .circle4 {
+        background: $row-circle-color4;
+        height: 100px;
+        width: 100px;
+    }
+
+}
+
+// footer is styled here
+.footer {
+    height: 50px;
+    // variable colors are given which was set at first
+    background: $Header-Footer-colors;
+}

@@ -1,0 +1,29 @@
+Specification
+
+You should use SCSS / SASS to create the CSS that (as accurately as possible) implements the design shown in the target images.
+
+Please view the following video for reference given in the folder.
+
+ 1. The HTML should not be altered in any way. All of your work should be creating
+   the SCSS code required to meet the target design.
+
+ 2. SCSS should have a mixin to handle the centering of elements.
+
+ 3. SCSS should have a mixin that handles media queries.
+
+ 4. There are three breakpoints:
+    - 801px and above: header image url is https://via.placeholder.com/400
+    - Between 481px and 800px: header image url is https://via.placeholder.com/300
+    - 480px and below: header image url is https://via.placeholder.com/300
+
+ 5. Circles in .container.circles should be inline at 621px and above, otherwise they should stack vertically.
+
+ 6. Circle radii are 70px, 80px, 90px and 100px.
+
+ 7. The row / circle background colours are: #4e89ae #43658b #ed6663 #ffa372.
+
+ 8. The header and footer background colour is #8ccff7.
+
+ 9. The circle and row hover color is #444.
+
+10. Footer height is 50px.
