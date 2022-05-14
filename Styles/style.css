@@ -22,6 +22,16 @@
           align-items: center;
 }
 
+@media (max-width: 801px) {
+  .Header #image-holder {
+    background: url("https://via.placeholder.com/400");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 400px;
+    width: 400px;
+  }
+}
+
 @media (min-width: 801px) {
   .Header #image-holder {
     background: url("https://via.placeholder.com/400");
@@ -80,9 +90,15 @@
   background: #444;
 }
 
-@media (min-width: 801px) {
+@media (max-width: 801px) {
   .Lines .line {
     height: 4vh;
+  }
+}
+
+@media (min-width: 801px) {
+  .Lines .line {
+    height: 7vh;
   }
 }
 
@@ -123,7 +139,7 @@
 
 @media (max-width: 620px) and (min-width: 481px) {
   #circles {
-    height: 47.5vh;
+    height: 44.3vh;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
@@ -136,21 +152,21 @@
   }
 }
 
-@media (min-width: 801px) {
+@media (max-width: 801px) {
   #circles {
-    height: 28vh;
+    height: 24.7vh;
   }
 }
 
 @media (max-width: 800px) and (min-width: 620px) {
   #circles {
-    height: 47.5vh;
+    height: 44.5vh;
   }
 }
 
 @media (max-width: 480px) {
   #circles {
-    height: 48.9vh;
+    height: 46vh;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;

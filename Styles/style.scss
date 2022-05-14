@@ -25,13 +25,20 @@ $circle-row-hover-color:#444;
 @mixin SetImage {
     // image size is set to cover
     background-size: cover;
-    // background iamage is set to no repeat
+    // background image is set to no repeat
     background-repeat: no-repeat;
 }
 
 // This @mixin is used to re-use media query for desktop device
-@mixin for-desktop-devices {
+@mixin above-desktop-devices {
     @media (min-width:801px) {
+        @content;
+    }
+}
+// This @mixin is used to re-use media query for width above desktop device
+
+@mixin for-desktop-devices {
+    @media (max-width:801px) {
         @content;
     }
 }
@@ -93,6 +100,13 @@ $circle-row-hover-color:#444;
             width: 400px;
         }
 
+        @include above-desktop-devices {
+            background: url("https://via.placeholder.com/400");
+            @include SetImage(); //image is centered through reuseable @Mixin code
+            height: 400px;
+            width: 400px;
+        }
+
         // image is added based on multiple media queries
         @include for-tablet-devices() {
             background: url("https://via.placeholder.com/300");
@@ -144,6 +158,11 @@ $circle-row-hover-color:#444;
         }
 
         // height is customized for different devices
+        @include above-desktop-devices {
+            height: 7vh; // vh view port height is a unit which uses the main size of the view port itself it is not dependant on any tag but on the view port window itself 
+        }
+
+        // height is customized for different devices
         @include flex-stack {
             //flex-stack is a media query @mixin of WxH(620x481 px) 
             height: 4vh;
@@ -177,7 +196,7 @@ $circle-row-hover-color:#444;
     @include flex-stack {
         //flex-stack is a media query of WxH(620x481 px) 
 
-        height: 47.5vh;
+        height: 44.3vh;
         // flex direction is changed
         flex-direction: column;
         // the content is directed to space around along x axis
@@ -189,15 +208,15 @@ $circle-row-hover-color:#444;
     // height is customized for specific width devices    
 
     @include for-desktop-devices {
-        height: 28vh;
+        height: 24.7vh;
     }
 
     @include for-tablet-devices {
-        height: 47.5vh;
+        height: 44.5vh;
     }
 
     @include for-mobile-devices {
-        height: 48.9vh;
+        height: 46vh;
         // flex direction is changed
         flex-direction: column;
         // the content is directed to space around along x axis
