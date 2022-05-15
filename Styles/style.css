@@ -22,7 +22,7 @@
           align-items: center;
 }
 
-@media (max-width: 801px) {
+@media (max-width: 1280px) {
   .Header #image-holder {
     background: url("https://via.placeholder.com/400");
     background-size: cover;
@@ -32,7 +32,7 @@
   }
 }
 
-@media (min-width: 801px) {
+@media (min-width: 1280px) {
   .Header #image-holder {
     background: url("https://via.placeholder.com/400");
     background-size: cover;
@@ -90,13 +90,13 @@
   background: #444;
 }
 
-@media (max-width: 801px) {
+@media (max-width: 1280px) {
   .Lines .line {
     height: 4vh;
   }
 }
 
-@media (min-width: 801px) {
+@media (min-width: 1280px) {
   .Lines .line {
     height: 7vh;
   }
@@ -152,21 +152,27 @@
   }
 }
 
-@media (max-width: 801px) {
+@media (max-width: 1280px) {
   #circles {
-    height: 24.7vh;
+    height: 27.5vh;
+  }
+}
+
+@media (min-width: 1280px) {
+  #circles {
+    height: 37.5vh;
   }
 }
 
 @media (max-width: 800px) and (min-width: 620px) {
   #circles {
-    height: 44.5vh;
+    height: 41vh;
   }
 }
 
 @media (max-width: 480px) {
   #circles {
-    height: 46vh;
+    height: 46.6vh;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;

@@ -31,14 +31,14 @@ $circle-row-hover-color:#444;
 
 // This @mixin is used to re-use media query for desktop device
 @mixin above-desktop-devices {
-    @media (min-width:801px) {
+    @media (min-width:1280px) {
         @content;
     }
 }
 // This @mixin is used to re-use media query for width above desktop device
 
 @mixin for-desktop-devices {
-    @media (max-width:801px) {
+    @media (max-width:1280px) {
         @content;
     }
 }
@@ -208,15 +208,18 @@ $circle-row-hover-color:#444;
     // height is customized for specific width devices    
 
     @include for-desktop-devices {
-        height: 24.7vh;
+        height: 27.5vh;
+    }
+    @include above-desktop-devices {
+        height: 37.5vh;
     }
 
     @include for-tablet-devices {
-        height: 44.5vh;
+        height: 41vh;
     }
 
     @include for-mobile-devices {
-        height: 46vh;
+        height: 46.6vh;
         // flex direction is changed
         flex-direction: column;
         // the content is directed to space around along x axis
